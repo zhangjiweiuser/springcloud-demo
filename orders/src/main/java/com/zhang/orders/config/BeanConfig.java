@@ -14,10 +14,10 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class BeanConfig {
 
-    @Bean
-    @LoadBalanced
-    public RestTemplate restTemplate(RestTemplateBuilder builder){
-        RestTemplate restTemplate = builder.build();
-        return restTemplate;
-    }
+//    @Bean
+//    @LoadBalanced
+//    public RestTemplate restTemplate(RestTemplateBuilder builder){
+//        RestTemplate restTemplate = builder.build();
+//        return restTemplate;
+//    }
 }

@@ -1,5 +1,6 @@
 package com.zhang.orders.controller;
 
+import com.zhang.orders.feign.StockFeignService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -14,15 +15,26 @@ import javax.annotation.Resource;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
-    @Resource
-    RestTemplate restTemplate;
+//    @Resource
+//    RestTemplate restTemplate;
 
+    @Resource
+    StockFeignService stockFeignService;
     @RequestMapping("/add")
     public String add() {
 
-        String forObject = restTemplate.getForObject("http://stock-service/stock/deduct", String.class);
+        String forObject = stockFeignService.deduct();
         System.out.println("新增订单：" + forObject);
 
         return "新增库存";
     }
+
+//    @RequestMapping("/add")
+//    public String add() {
+//
+//        String forObject = restTemplate.getForObject("http://stock-service/stock/deduct", String.class);
+//        System.out.println("新增订单：" + forObject);
+//
+//        return "新增库存";
+//    }
 }
