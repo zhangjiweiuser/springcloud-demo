@@ -10,3 +10,6 @@ spring:
         password: nacos
         username: nacos
         namespace: public
+stock-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.zhang.orders.rule.CustomRule # com.alibaba.cloud.nacos.ribbon.NacosRule
