@@ -8,6 +8,10 @@ spring:
         password: nacos
         username: nacos
         namespace: public
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8888
+      web-context-unify: false # 默认将调用链路收敛了
 stock-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.zhang.orders.rule.CustomRule # com.alibaba.cloud.nacos.ribbon.NacosRule

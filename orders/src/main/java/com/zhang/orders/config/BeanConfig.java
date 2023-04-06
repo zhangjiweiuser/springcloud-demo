@@ -1,5 +1,6 @@
 package com.zhang.orders.config;
 
+import com.alibaba.csp.sentinel.annotation.aspectj.SentinelResourceAspect;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
@@ -20,4 +21,8 @@ public class BeanConfig {
 //        RestTemplate restTemplate = builder.build();
 //        return restTemplate;
 //    }
+    @Bean
+    public SentinelResourceAspect sentinelResourceAspect(){
+        return new SentinelResourceAspect();
+    }
 }
