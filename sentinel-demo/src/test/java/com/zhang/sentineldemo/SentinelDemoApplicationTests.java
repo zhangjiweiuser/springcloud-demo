@@ -1,10 +1,10 @@
-package com.zhang.stock;
+package com.zhang.sentineldemo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class StockApplicationTests {
+class SentinelDemoApplicationTests {
 
     @Test
     void contextLoads() {

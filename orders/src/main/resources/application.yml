@@ -1,8 +1,6 @@
 server:
   port: 8080
 spring:
-  application:
-    name: order-service
   cloud:
     nacos:
       server-addr: 127.0.0.1:8848
@@ -13,3 +11,20 @@ spring:
 stock-service:
   ribbon:
     NFLoadBalancerRuleClassName: com.zhang.orders.rule.CustomRule # com.alibaba.cloud.nacos.ribbon.NacosRule
+#springboot 默认的日志级别是info，fegin的debug不会输出
+logging:
+  level:
+    com.zhang.orders.feign: debug
+# feign 日志局部配置
+feign:
+  client:
+    config:
+      product-service:
+        logger-level: BASIC
+        # 连接超时时间，默认2s
+        connect-timeout: 5000
+        # 请求处理超时时间，默认5S
+        read-timeout: 3000
+        # 可以设置自定义拦截器
+        request-interceptors:
+          - com.zhang.orders.interceptor.FeignRequestInterceptor
