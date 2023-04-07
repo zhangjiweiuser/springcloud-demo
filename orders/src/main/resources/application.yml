@@ -32,3 +32,5 @@ feign:
         # 可以设置自定义拦截器
         request-interceptors:
           - com.zhang.orders.interceptor.FeignRequestInterceptor
+  sentinel:
+    enabled: true

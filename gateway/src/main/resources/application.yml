@@ -1,0 +1,23 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    # gateway 配置
+    gateway:
+      discovery:
+        locator:
+          enabled: true # 是否启动自动识别nacos服务 ，这个时候他会根据服务名路由到相应的服务上，
+                                                    # http://localhost:8085/order-service/gateway 会路由到
+                                                    # http://order-service/gateway
+    # 配置nacos
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        username: nacos
+        password: nacos
+  main:
+    web-application-type: reactive
+
+
