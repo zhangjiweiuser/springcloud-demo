@@ -1,9 +1,12 @@
 package com.zhang.orders.controller;
 
+import com.zhang.orders.service.OrderService;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -15,6 +18,8 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/flow")
 public class FlowController {
 
+    @Resource
+    OrderService orderService;
     @RequestMapping("/flow")
     public String flow() throws InterruptedException {
         TimeUnit.SECONDS.sleep(2);
@@ -35,5 +40,15 @@ public class FlowController {
     @RequestMapping("/header")
     public String header(@RequestHeader("X-Request-red") String color) {
         return color;
+    }
+
+    @RequestMapping("/skywalk")
+    public String skywalk() throws InterruptedException {
+        return orderService.skywalkingTest("skywalk");
+    }
+
+    @RequestMapping("/get/{id}")
+    public String get(@PathVariable("id") Integer id) throws InterruptedException {
+        return orderService.getById(id);
     }
 }
